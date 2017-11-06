@@ -15,7 +15,11 @@ services:
   web:
     image: nginx:alpine
     volumes:
+      - ./.docker/nginx/h5bp:/etc/nginx/h5bp
+      - ./.docker/nginx/fastcgi_params:/etc/nginx/fastcgi_params
+      - ./.docker/nginx/mime.types:/etc/nginx/mime.types
       - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./.docker/nginx/site.conf:/etc/nginx/site.conf
     links:
       - app
     depends_on:

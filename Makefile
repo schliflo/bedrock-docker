@@ -1,4 +1,9 @@
+#############################
+# ENVIRONMENT
+#############################
+
 export COMPOSE_PROJECT_NAME=wp-bedrock-docker
+
 
 #############################
 # CONTAINER ACCESS
@@ -16,7 +21,12 @@ stop:
 destroy:
 	docker-compose down --rmi all --remove-orphans
 
+update:
+	docker-compose pull
+
 restart: stop start
+
+rebuild: stop destroy update up
 
 #############################
 # CONTAINER ACCESS
@@ -33,6 +43,7 @@ ssh-db:
 
 ssh-memcached:
 	docker exec -it $$(docker-compose ps -q memcached) sh
+
 
 #############################
 # INFORMATION
