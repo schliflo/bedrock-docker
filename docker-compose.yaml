@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./wp:/var/www/html/
+      - ./app:/var/www/html/
 
   web:
     image: nginx:alpine
@@ -30,24 +30,8 @@ services:
       - VIRTUAL_HOST=wp-bedrock.docker
       - VIRTUAL_PORT=80
 
-  yarn:
-    image: node:alpine
-    links:
-      - web:wp-bedrock.docker
-    depends_on:
-      - app
-      - web
-    volumes_from:
-      - app
-    environment:
-      - VIRTUAL_HOST=sync.wp-bedrock.docker
-      - VIRTUAL_PORT=3000
-    entrypoint: /bin/sh
-
   db:
     image: mariadb
-#    volumes:
-#      - ./.docker/db:/var/lib/mysql/
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=wp

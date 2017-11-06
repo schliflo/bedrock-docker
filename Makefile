@@ -18,7 +18,7 @@ start:
 stop:
 	docker-compose stop
 
-destroy:
+destroy: stop
 	docker-compose down --rmi all --remove-orphans
 
 update:
@@ -26,7 +26,20 @@ update:
 
 restart: stop start
 
-rebuild: stop destroy update up
+rebuild: destroy update up
+
+
+#############################
+# BACKUP/RESTORE
+#############################
+
+mysql-backup:
+	docker exec -i $$(docker-compose ps -q db) mysqldump -u root -ppassword --opt --single-transaction --events --all-databases --routines --comments | bzip2 > "backup/mysql.sql.bz2"
+
+mysql-restore:
+	bzcat "backup/mysql.sql.bz2" | docker exec -i $$(docker-compose ps -q db) mysql -u root -ppassword
+	echo "FLUSH PRIVILEGES;" | docker exec -i $$(docker-compose ps -q db) mysql -u root -ppassword
+
 
 #############################
 # CONTAINER ACCESS
