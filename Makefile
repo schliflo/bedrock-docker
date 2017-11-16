@@ -2,7 +2,16 @@
 # ENVIRONMENT
 #############################
 
-export COMPOSE_PROJECT_NAME=wp-bedrock-docker
+export PROJECT_NAME=bedrock
+export COMPOSE_PROJECT_NAME=${PROJECT_NAME}
+
+
+#############################
+# INITIALIZATION
+#############################
+
+init:
+	composer create-project roots/bedrock app
 
 
 #############################
@@ -23,10 +32,12 @@ destroy: stop
 
 update:
 	docker-compose pull
+	docker-compose build --pull
+	make up
 
 restart: stop start
 
-rebuild: destroy update up
+rebuild: destroy update
 
 
 #############################
@@ -53,9 +64,6 @@ ssh-web:
 
 ssh-db:
 	docker exec -it $$(docker-compose ps -q db) sh
-
-ssh-memcached:
-	docker exec -it $$(docker-compose ps -q memcached) sh
 
 
 #############################
