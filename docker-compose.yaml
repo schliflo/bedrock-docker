@@ -79,8 +79,6 @@ services:
   #######################################
   mail:
     image: mailhog/mailhog
-    ports:
-      - 8025:8025
     environment:
       - VIRTUAL_PORT=8025
       - VIRTUAL_HOST=mail.$PROJECT_NAME.docker
