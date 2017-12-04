@@ -11,13 +11,11 @@ services:
       - db
       - mail
     links:
-      - db:db
-      - mail:mail
+      - db
+      - mail
     volumes:
       - ./app:/var/www/html/
     environment:
-      - VIRTUAL_HOST=$PROJECT_NAME.docker
-      - VIRTUAL_PORT=80
       - DB_NAME=wp
       - DB_USER=wp
       - DB_PASSWORD=password
@@ -40,7 +38,7 @@ services:
       - ./.docker/web/fastcgi_params:/etc/nginx/fastcgi_params
       - ./.docker/web/mime.types:/etc/nginx/mime.types
       - ./.docker/web/nginx.conf:/etc/nginx/nginx.conf
-      - ./.docker/web/site.conf:/etc/nginx/site.conf
+      - ./.docker/web/site.conf.template:/etc/nginx/site.conf.template
     depends_on:
       - app
     links:
@@ -50,6 +48,8 @@ services:
     environment:
       - VIRTUAL_HOST=$PROJECT_NAME.docker
       - VIRTUAL_PORT=80
+    # substitute hostname to nginx conf; syntax from here: https://github.com/docker-library/docs/issues/496#issuecomment-203003827
+    command: /bin/sh -c "envsubst '$$VIRTUAL_HOST' < /etc/nginx/site.conf.template > /etc/nginx/site.conf && cat /etc/nginx/site.conf && nginx -g 'daemon off;'"
 
   #######################################
   # Database
@@ -71,11 +71,24 @@ services:
   #######################################
   # Mailhog
   #######################################
-  # 1. Install a SMTP Plugin, we recommend one of the following:
-  #    - https://wordpress.org/plugins/wp-mail-smtp/
-  #    - https://wordpress.org/plugins/post-smtp/
-  # 2. Set SMTP server hostname to mail
-  # 3. Set SMTP port to 1025
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - VIRTUAL_PORT=80
+      - VIRTUAL_HOST=phpmyadmin.$PROJECT_NAME.docker
+      - PMA_ABSOLUTE_URI=https://phpmyadmin.$PROJECT_NAME.docker/
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER=wp
+      - PMA_PASSWORD=password
+
+  #######################################
+  # Mailhog
   #######################################
   mail:
     image: mailhog/mailhog
@@ -84,4 +97,3 @@ services:
       - VIRTUAL_HOST=mail.$PROJECT_NAME.docker
 
 # TODO: install composer dependencies via docker
-# TODO: dockerize Browsersync/Gulp

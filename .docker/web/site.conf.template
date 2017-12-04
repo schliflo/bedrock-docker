@@ -1,8 +1,9 @@
 server {
   listen [::]:80;
   listen 80;
-  server_name bedrock.docker;
-  
+
+  server_name ${VIRTUAL_HOST};
+
   access_log   /var/log/nginx/access.log main;
   error_log    /var/log/nginx/error.log;
   
@@ -47,9 +48,9 @@ server {
 server {
   listen [::]:80;
   listen 80;
-  server_name www.wp-bedrock.docker;
+  server_name www.${VIRTUAL_HOST};
 
   location / {
-    return 301 http://wp-bedrock.docker$request_uri;
+    return 301 http://${VIRTUAL_HOST}$request_uri;
   }
 }
