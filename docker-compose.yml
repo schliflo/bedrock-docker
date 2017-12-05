@@ -5,8 +5,7 @@ services:
   #######################################
   app:
     build:
-      context: .
-      dockerfile: .docker/app/Dockerfile
+      context: ./.docker/app
     depends_on:
       - db
       - mail
@@ -32,13 +31,8 @@ services:
   # Webserver
   #######################################
   web:
-    image: nginx:alpine
-    volumes:
-      - ./.docker/web/h5bp:/etc/nginx/h5bp
-      - ./.docker/web/fastcgi_params:/etc/nginx/fastcgi_params
-      - ./.docker/web/mime.types:/etc/nginx/mime.types
-      - ./.docker/web/nginx.conf:/etc/nginx/nginx.conf
-      - ./.docker/web/site.conf.template:/etc/nginx/site.conf.template
+    build:
+      context: ./.docker/web
     depends_on:
       - app
     links:
