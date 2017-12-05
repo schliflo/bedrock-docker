@@ -53,15 +53,10 @@ rebuild: destroy update
 #############################
 
 mysql-backup:
-	bash ./.utils/message.sh info "Creating a backup of your database in ./backup/mysql.sql.bz2"
-	mkdir -p backup
-	docker exec -i $$(docker-compose ps -q db) mysqldump -u root -ppassword --opt --single-transaction --events --all-databases --routines --comments | bzip2 > "backup/mysql.sql.bz2"
+	bash ./.utils/mysql-backup.sh
 
 mysql-restore:
-	bash ./.utils/message.sh info "Restoring ./backup/mysql.sql.bz2"
-	[ -f backup/mysql.sql.bz2 ]
-	bzcat "backup/mysql.sql.bz2" | docker exec -i $$(docker-compose ps -q db) mysql -u root -ppassword
-	echo "FLUSH PRIVILEGES;" | docker exec -i $$(docker-compose ps -q db) mysql -u root -ppassword
+	bash ./.utils/mysql-restore.sh
 
 composer:
 	mkdir -p app
