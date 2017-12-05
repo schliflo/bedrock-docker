@@ -24,6 +24,7 @@ init:
 up:
 	bash ./.utils/header.sh
 	echo ""
+	[ -d "app" ] || make init
 	bash ./.utils/message.sh info "Starting your project"
 	docker-compose up -d
 	make urls

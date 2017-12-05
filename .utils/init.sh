@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-bash ./.utils/header.sh
 bash ./.utils/message.sh headline "This script will help you get started with your development setup"
 if [ -d "app" ]; then
     # app directory exists; asking user for permission to delete
@@ -29,5 +28,4 @@ if [ "$initOK" = "Yes" ] || [ "$initOK" = "yes" ] || [ "$initOK" = "y" ] || [ "$
         make composer install
     fi
     bash ./.utils/message.sh info "Starting your project..."
-    make up
 fi
