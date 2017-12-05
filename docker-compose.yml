@@ -43,7 +43,7 @@ services:
       - VIRTUAL_HOST=$PROJECT_NAME.docker
       - VIRTUAL_PORT=80
     # substitute hostname to nginx conf; syntax from here: https://github.com/docker-library/docs/issues/496#issuecomment-203003827
-    command: /bin/sh -c "envsubst '$$VIRTUAL_HOST' < /etc/nginx/site.conf.template > /etc/nginx/site.conf && cat /etc/nginx/site.conf && nginx -g 'daemon off;'"
+    command: /bin/sh -c "envsubst '$$VIRTUAL_HOST' < /etc/nginx/site.conf.template > /etc/nginx/site.conf && nginx -g 'daemon off;'"
 
   #######################################
   # Database
