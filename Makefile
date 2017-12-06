@@ -62,7 +62,7 @@ mysql-restore:
 composer:
 	mkdir -p app
 	sleep 1
-	docker run --rm --interactive --tty --volume $$PWD/app:/app --user $$(id -u):$$(id -g) composer $(ARGS)
+	docker run --rm --interactive --tty --volume $$(pwd)/app:/app --user $$(id -u):$$(id -g) composer $(ARGS)
 
 
 #############################
