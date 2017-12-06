@@ -6,7 +6,7 @@ Easy-to-use [Docker](https://www.docker.com/) setup for local development of [Be
 - Minimal configuration needed: Enter your project's name and you're good to go
 - Backup/Restore routines for the database
 - [MailHog](https://github.com/mailhog/MailHog): Catch all outgoing mail for easy mail debugging
-- [phpMyAdmin](https://github.com/phpmyadmin/phpmyadmin): Direct Database access
+- [phpMyAdmin](https://github.com/phpmyadmin/phpmyadmin): Direct database access
 
 [![Screenshot showing Bedrock Docker in action](https://user-images.githubusercontent.com/9881672/33634343-21380236-da14-11e7-8322-8896341115c9.png "Screenshot")](https://user-images.githubusercontent.com/9881672/33634343-21380236-da14-11e7-8322-8896341115c9.png)
 ## Requirements
