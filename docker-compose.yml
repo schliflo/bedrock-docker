@@ -89,3 +89,11 @@ services:
     environment:
       - VIRTUAL_PORT=8025
       - VIRTUAL_HOST=mail.$PROJECT_NAME.docker
+
+  #######################################
+  # Composer
+  #######################################
+  composer:
+    image: composer
+    volumes:
+      - ./app:/app
