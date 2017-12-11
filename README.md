@@ -1,6 +1,8 @@
 # Bedrock Docker
 Easy-to-use [Docker](https://www.docker.com/) setup for local development of [Bedrock](https://github.com/roots/bedrock) based [Wordpress](https://wordpress.org/) projects
 
+*please note that this is intended for local development - deploying it to production is probably a bad idea*
+
 ## Features
 - Automated setup of new and existing [Bedrock](https://github.com/roots/bedrock) projects
 - Minimal configuration needed: Enter your project's name and you're good to go
