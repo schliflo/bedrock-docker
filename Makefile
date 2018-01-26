@@ -46,7 +46,7 @@ upgrade:
 
 restart: stop up
 
-rebuild: destroy update
+rebuild: destroy upgrade
 
 
 #############################
