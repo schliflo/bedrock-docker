@@ -54,8 +54,8 @@ Run `make mysql-backup` creates a compressed backup of your database in the back
 ### Restoring a database
 Use phpMyAdmin to restore the database or use `make mysql-restore` if you created a backup previously
 
-### Updating the project & development containers
-Run `make update`
+### Upgrading the project & development containers
+Run `make upgrade`
 
 ### Logging & information
 Run `make logs` or `make logs app` for just the logs of all or specific containers

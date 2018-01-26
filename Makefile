@@ -37,8 +37,8 @@ destroy: stop
 	bash ./.utils/message.sh info "Deleting all containers"
 	docker-compose down --rmi all --remove-orphans
 
-update:
-	bash ./.utils/message.sh info "Updating your project"
+upgrade:
+	bash ./.utils/message.sh info "Upgrading your project"
 	docker-compose pull
 	docker-compose build --pull
 	make composer update
@@ -62,7 +62,7 @@ mysql-restore:
 composer:
 	mkdir -p app
 	sleep 1
-	docker-compose run composer composer $(ARGS)
+	bash ./.utils/composer.sh $(ARGS)
 
 
 #############################
