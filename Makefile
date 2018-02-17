@@ -25,20 +25,21 @@ up:
 	bash ./.utils/header.sh
 	echo ""
 	[ -d "app" ] || make init
-	bash ./.utils/message.sh info "Starting your project"
+	bash ./.utils/message.sh info "Starting your project..."
+	make check-proxy
 	docker-compose up -d
 	make urls
 
 stop:
-	bash ./.utils/message.sh info "Stopping your project"
+	bash ./.utils/message.sh info "Stopping your project..."
 	docker-compose stop
 
 destroy: stop
-	bash ./.utils/message.sh info "Deleting all containers"
+	bash ./.utils/message.sh info "Deleting all containers..."
 	docker-compose down --rmi all --remove-orphans
 
 upgrade:
-	bash ./.utils/message.sh info "Upgrading your project"
+	bash ./.utils/message.sh info "Upgrading your project..."
 	docker-compose pull
 	docker-compose build --pull
 	make composer update
@@ -91,6 +92,8 @@ state:
 logs:
 	docker-compose logs -f --tail=50 $(ARGS)
 
+check-proxy:
+	bash ./.utils/check-proxy.sh
 
 #############################
 # Argument fix workaround
