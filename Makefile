@@ -65,6 +65,9 @@ composer:
 	sleep 1
 	bash ./.utils/composer.sh $(ARGS)
 
+ci-test:
+	bash ./.utils/ci/test.sh
+
 
 #############################
 # CONTAINER ACCESS

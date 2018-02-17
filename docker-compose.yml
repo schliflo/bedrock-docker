@@ -97,3 +97,18 @@ services:
     image: composer
     volumes:
       - ./app:/app
+
+  #######################################
+  # CI-Test
+  #######################################
+  test:
+    build:
+      context: ./.docker/web
+    depends_on:
+      - web
+      - phpmyadmin
+      - mail
+    links:
+      - web:$PROJECT_NAME.docker
+      - phpmyadmin:phpmyadmin.$PROJECT_NAME.docker
+      - mail:mail.$PROJECT_NAME.docker
