@@ -1,0 +1,14 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+before_install:
+  - make composer create-project roots/bedrock .
+
+script:
+  - make up
+  - sleep 10
+  - make ci-test
