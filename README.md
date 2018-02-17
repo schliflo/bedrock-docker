@@ -14,11 +14,12 @@ Easy-to-use [Docker](https://www.docker.com/) setup for local development of [Be
 ## Requirements
 
 ### macOS
-- Have `docker-compose` and [dinghy](https://github.com/codekitchen/dinghy) installed & running
+- If you're using [dinghy](https://github.com/codekitchen/dinghy) that's everything you need
+- For native docker installs you need to configure your system to resolve `.docker` domains to `127.0.0.1`
 
 ### Linux
 - `docker` & `docker-compose`
-- Some sort of reverse proxy container like [nginx-proxy](https://github.com/jwilder/nginx-proxy) used by [dinghy](https://github.com/codekitchen/dinghy) 
+- Configure your system to resolve `.docker` domains to `127.0.0.1`
 
 ## Usage
 
