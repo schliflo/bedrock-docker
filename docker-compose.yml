@@ -23,9 +23,6 @@ services:
       - WP_ENV=development
       - WP_HOME=http://$PROJECT_NAME.docker
       - WP_SITEURL=http://$PROJECT_NAME.docker/wp
-    extra_hosts:
-      - "api.wordpress.org:66.155.40.187"
-      - "downloads.wordpress.org:66.155.40.203"
 
   #######################################
   # Webserver
