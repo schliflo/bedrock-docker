@@ -6,6 +6,7 @@ MAKEFLAGS += --silent
 #############################
 
 export PROJECT_NAME=bedrock
+export DB_PREFIX=wp_
 export COMPOSE_PROJECT_NAME=${PROJECT_NAME}
 
 
