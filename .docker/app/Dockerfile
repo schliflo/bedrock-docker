@@ -1,4 +1,4 @@
-FROM webdevops/php:alpine-php7
+FROM webdevops/php-dev:alpine-php7
 
 # install mhsendmail and configure it to use mailhog
 RUN apk add --no-cache musl-dev go nano curl
