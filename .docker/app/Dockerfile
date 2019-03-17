@@ -7,8 +7,7 @@ RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 RUN echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mail:1025' > /opt/docker/etc/php/php.ini
 
 # install wp cli
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
+RUN curl -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x /usr/local/bin/wp
 
 WORKDIR /var/www/html/
