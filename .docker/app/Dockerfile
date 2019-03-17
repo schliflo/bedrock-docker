@@ -1,7 +1,6 @@
-FROM webdevops/php-dev:alpine-php7
+FROM webdevops/php-dev:7.3
 
 # configure postfix to use mailhog
-RUN apk add --no-cache nano curl
 RUN postconf -e "relayhost = mail:1025"
 
 # install wp cli
