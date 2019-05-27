@@ -8,7 +8,7 @@ if [ -f "./backup/mysql.sql.gz" ]; then
 else
     backupOK="Yes"
 fi
-if [ "$backupOK" = "Yes" ] || [ "$backupOK" = "yes" ] || [ "$backupOK" = "y" ] || [ "$backupOK" = "y" ]; then
+if [ "$backupOK" = "Yes" ] || [ "$backupOK" = "yes" ] || [ "$backupOK" = "Y" ] || [ "$backupOK" = "y" ]; then
     bash ./.utils/message.sh info "Creating a backup of your database in backup/mysql.sql.gz"
     mkdir -p backup
     docker exec -i $(docker-compose ps -q db) mysqldump -u root -ppassword --opt --single-transaction --events --databases wp --routines --comments | gzip > "backup/mysql.sql.gz"

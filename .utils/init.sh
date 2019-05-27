@@ -12,7 +12,7 @@ if [ -d "app" ]; then
 else
     initOK="Yes"
 fi
-if [ "$initOK" = "Yes" ] || [ "$initOK" = "yes" ] || [ "$initOK" = "y" ] || [ "$initOK" = "y" ]; then
+if [ "$initOK" = "Yes" ] || [ "$initOK" = "yes" ] || [ "$initOK" = "Y" ] || [ "$initOK" = "y" ]; then
     rm -rf app
     echo ""
     read -e -p "Provide your own Bedrock repo or press enter to create a fresh instance: " repo
