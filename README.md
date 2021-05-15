@@ -1,3 +1,6 @@
+> This project is no longer maintained as we developed [docker-mate](https://github.com/docker-mate/docker-mate) as a successor, which supports more PHP based sytems other than Wordpress, local SSL and is overall more extensible and improved. <br>
+> I'd highly suggest having a look at the [docker-mate repo](https://github.com/docker-mate/docker-mate) and the [docs](https://docker-mate.dev/).
+
 # Bedrock Docker
 Easy-to-use [Docker](https://www.docker.com/) setup for local development of [Bedrock](https://github.com/roots/bedrock) based [Wordpress](https://wordpress.org/) projects
 
